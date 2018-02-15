@@ -3,22 +3,28 @@
 <head>
  	<meta charset="UTF-8">
  	<title>Mon Application</title>
- 	<link rel="stylesheet" type="text/css" href="css/style.css">
- 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+ 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+ 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 </head>
 <body>
  <h3>Liste des membres</h3>
 
  <table class="tableau">
  	<% let noLigne = 0 %>
- 	<% let asc = 1 %>
+ 	<% let ordre = "" %>
+ 	<% if(ordre == "asc") { %>
+		<% ordre = "desc" %>
+	<% } else { %>
+		<% ordre = "asc" %>
+	<% } %>
 		<% for(elm of adresses) {%>
 		<% if(noLigne==0) { %>
 		<tr>
 			<% noLigne++ %>
 			<% for(p in elm) {%>
-			<td><a href="trier/<%= p %>/asc"><%= p %></td></a>
+			<td><a href="/trier/<%= p %>/<%= ordre %>"><%= p %></td></a>
 			<% } %>
+			
 			<td><a href="/formulaire">Ajouter</a></td>
 		</tr>
 		<% } %>
@@ -26,6 +32,7 @@
 			<% for(p in elm) {%>
 			<td><%= elm[p] %></td>
 			<% } %>
+			<td><a href="/formulaire">Modifier</a></td>
 			<td><a href="/detruire/<%= elm['_id'] %>">Détruire</a></td>
 		</tr>
 	<% } %>
