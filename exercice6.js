@@ -5,6 +5,7 @@ app.use(express.static('public'));
 /* on associe le moteur de vue au module «ejs» */
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient // le pilote MongoDB
+const ObjectID = require('mongodb').ObjectID;
 app.set('view engine', 'ejs'); // générateur de template
 // Utilisation de bodyParser
 app.use(bodyParser());
