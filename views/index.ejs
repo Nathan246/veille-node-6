@@ -11,12 +11,13 @@
 
  <table class="tableau">
  	<% let noLigne = 0 %>
+ 	<% let asc = 1 %>
 		<% for(elm of adresses) {%>
 		<% if(noLigne==0) { %>
 		<tr>
 			<% noLigne++ %>
 			<% for(p in elm) {%>
-			<td><%= p %></td>
+			<td><a href="trier/<%= p %>/asc"><%= p %></td></a>
 			<% } %>
 			<td><a href="/formulaire">Ajouter</a></td>
 		</tr>
