@@ -45,7 +45,6 @@ app.get('/detruire/:telephone', (req, res) => {
 	}) 
 })
 */
-
 app.get('/detruire/:id', (req, res) => {
  var id = req.params.id 
 // var critere = 'ObjectId("58bae3feaf5a674b240cfe53")'
