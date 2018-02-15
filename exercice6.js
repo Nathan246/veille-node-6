@@ -58,7 +58,7 @@ console.log(id)
  db.collection('adresse').findOneAndDelete({"_id": critere}, (err, resultat) => {
 
 if (err) return console.log(err)
- res.render('index.ejs', {adresses: resultat})
+ res.redirect('/membres')  // redirige vers la route qui affiche la collection
  })
 })
 
