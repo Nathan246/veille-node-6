@@ -69,10 +69,10 @@ app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
 	let cursor = db.collection('adresse').find().sort(cle,ordre).toArray(function(err, resultat){
-		ordre = !ordre
-		console.log(ordre)
+		//ordre = -ordre
+		//console.log(req.url.split("/")[3])
+		console.log(ordre);
 		res.render('adresses.ejs', {adresses: resultat, cle, ordre })
-		//res.redirect('/membres')
 	})
 })
 
@@ -82,8 +82,8 @@ app.post('/modifier', (req, res) => {
 		console.log('sauvegarde') 
 		var oModif = {
 			"_id": ObjectID(req.body['_id']), 
-			prenom: req.body.prenom, 
 			nom: req.body.nom,
+			prenom: req.body.prenom, 
 			telephone: req.body.telephone,
 			courriel: req.body.courriel
 		}
