@@ -24,9 +24,9 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
 app.get('/membres', function (req, res) {
    let cursor = db.collection('adresse').find().toArray(function(err, resultat){
  if (err) return console.log(err)
- // transfert du contenu vers la vue index.ejs (renders)
+ // transfert du contenu vers la vue adresses.ejs (renders)
  // affiche le contenu de la BD
- res.render('index.ejs', {adresses: resultat})
+ res.render('adresses.ejs', {adresses: resultat})
  }) 
 })
 
@@ -40,7 +40,7 @@ app.get('/detruire/:telephone', (req, res) => {
 		if (err) return res.send(500, err)
 			var cursor = db.collection('adresse').find().toArray(function(err, resultat){
 		if (err) return console.log(err)
-			res.render('index.ejs', {adresses: resultat})
+			res.render('adresses.ejs', {adresses: resultat})
 		})
 	}) 
 })
@@ -65,9 +65,9 @@ app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
 	let cursor = db.collection('adresse').find().sort(cle,ordre).toArray(function(err, resultat){
-		//ordre = (req.params.ordre = 'desc' ? -1 : 1)
+		ordre = !ordre
 		console.log(ordre)
-		res.render('index.ejs', {adresses: resultat, cle, ordre })
+		res.render('adresses.ejs', {adresses: resultat, cle, ordre })
 		//res.redirect('/membres')
 	})
 })
