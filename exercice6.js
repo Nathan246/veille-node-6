@@ -21,6 +21,10 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
  })
 })
 
+app.get('/', function (req, res) {
+ res.render('accueil.ejs');
+})
+
 app.get('/membres', function (req, res) {
    let cursor = db.collection('adresse').find().toArray(function(err, resultat){
  if (err) return console.log(err)
@@ -74,11 +78,11 @@ app.get('/trier/:cle/:ordre', (req, res) => {
 
 app.post('/modifier', (req, res) => {
 	console.log('req.body' + req.body)
- 	if (req.body['_id'] != null) { 
+ 	if (req.body['_id'] != "") { 
 		console.log('sauvegarde') 
 		var oModif = {
 			"_id": ObjectID(req.body['_id']), 
-			prenom:req.body.prenom, 
+			prenom: req.body.prenom, 
 			nom: req.body.nom,
 			telephone: req.body.telephone,
 			courriel: req.body.courriel
