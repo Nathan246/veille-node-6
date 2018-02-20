@@ -38,18 +38,22 @@
 	 	})
 	 } 
 
-	 let elmTrier = document.querySelectorAll('.trier');
-	 let url = window.location.href;
-	 let ordre = url.split("/")[5];
+	 let elmTrier = document.getElementsByClassName("trier");
+	 let ordre = window.location.href.split("/")[5];
 	 console.log(ordre)
 
 	 if (ordre != null) {
 		 for (elm of elmTrier) {
 		 	if (ordre == "asc") {
 		 		ordre = "desc";
+		 	} else {
+		 		ordre = "asc"
 		 	}
 		 }
-		 document.getElementsByClassName("trier")[1].href = ordre;
+
+		 for (let i = 0; i < elmTrier.length; i++) {
+		 	elmTrier[i].href = ordre
+		 }
 	 }
 	 
 </script>
