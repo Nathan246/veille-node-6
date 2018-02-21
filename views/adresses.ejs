@@ -52,7 +52,8 @@
 		 }
 
 		 for (let i = 0; i < elmTrier.length; i++) {
-		 	elmTrier[i].href = ordre
+		 	elmTrier[i].href = "/trier/" + elmTrier[i].href.split("/")[4] + "/" + ordre
+		 	console.log(elmTrier[i].href)
 		 }
 	 }
 	 
